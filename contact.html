@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تواصل معنا | للخياطة أصول</title>
+<meta name="description" content="تواصل مع فريق للخياطة أصول عبر الهاتف أو واتساب أو البريد الإلكتروني، أو أرسل استفسارك مباشرة عبر النموذج.">
+<link rel="icon" href="assets/images/logo.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@500;600;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+  .contact-layout { display: grid; grid-template-columns: 1fr; gap: 32px; }
+  @media (min-width: 900px) { .contact-layout { grid-template-columns: 1fr 1fr; } }
+  .contact-info-card { background: var(--color-primary); color: #fff; border-radius: var(--radius-lg); padding: 36px; height: 100%; }
+  .contact-info-card h3 { color: #fff; }
+  .contact-info-card p { color: rgba(255,255,255,.8); }
+  .contact-info-item { display: flex; align-items: center; gap: 16px; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,.15); }
+  .contact-info-item i { width: 46px; height: 46px; border-radius: 50%; background: rgba(255,255,255,.12); display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--color-accent-light); flex-shrink: 0; }
+  .contact-info-item strong { display: block; font-size: 14px; }
+  .contact-info-item span.value { color: rgba(255,255,255,.85); font-size: 14px; direction: ltr; display: inline-block; }
+  .form-card { background: var(--color-white); border-radius: var(--radius-lg); box-shadow: var(--shadow-soft); padding: 36px; }
+  .faq-item { background: var(--color-white); border-radius: var(--radius-md); box-shadow: var(--shadow-soft); margin-bottom: 14px; overflow: hidden; }
+  .faq-question { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; cursor: pointer; font-family: var(--font-heading); font-weight: 600; }
+  .faq-question i { transition: transform .3s ease; color: var(--color-accent-dark); }
+  .faq-item.is-open .faq-question i { transform: rotate(180deg); }
+  .faq-answer { max-height: 0; overflow: hidden; transition: max-height .3s ease; }
+  .faq-answer p { padding: 0 24px 20px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="brand">
+      <img src="assets/images/logo.webp" alt="شعار للخياطة أصول">
+      <span class="brand-text"><strong>للخياطة أصول</strong><span>أدوات خياطة + تعليم احترافي</span></span>
+    </a>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="store.html">المتجر</a></li>
+        <li><a href="about.html">من نحن</a></li>
+        <li><a href="contact.html" class="active">تواصل معنا</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <a href="login.html" class="icon-btn" data-auth-account-link title="تسجيل الدخول"><i class="fa-solid fa-user"></i></a>
+      <a href="cart.html" class="icon-btn"><i class="fa-solid fa-cart-shopping"></i><span class="cart-badge">0</span></a>
+      <button class="nav-toggle" aria-label="القائمة"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </div>
+  <div class="mobile-nav">
+    <ul>
+      <li><a href="index.html">الرئيسية <i class="fa-solid fa-house"></i></a></li>
+      <li><a href="store.html">المتجر <i class="fa-solid fa-store"></i></a></li>
+      <li><a href="about.html">من نحن <i class="fa-solid fa-circle-info"></i></a></li>
+      <li><a href="contact.html">تواصل معنا <i class="fa-solid fa-envelope"></i></a></li>
+      <li><a href="login.html">حسابي <i class="fa-solid fa-user"></i></a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+
+  <div class="page-header">
+    <div class="container">
+      <h1>تواصل معنا</h1>
+      <div class="breadcrumb"><a href="index.html">الرئيسية</a><span>/</span><span>تواصل معنا</span></div>
+    </div>
+  </div>
+
+  <section>
+    <div class="container contact-layout">
+      <div class="contact-info-card" data-reveal>
+        <h3>بيانات التواصل</h3>
+        <p class="mb-3">فريقنا جاهز للرد على استفساراتك بخصوص المنتجات أو الطلبات أو الالتحاق بأكاديمية الأصول.</p>
+        <div class="contact-info-item">
+          <i class="fa-solid fa-phone"></i>
+          <div><strong>اتصل بنا</strong><span class="value">01090872716</span></div>
+        </div>
+        <div class="contact-info-item">
+          <i class="fa-brands fa-whatsapp"></i>
+          <div><strong>واتساب</strong><span class="value">01090872716</span></div>
+        </div>
+        <div class="contact-info-item">
+          <i class="fa-solid fa-envelope"></i>
+          <div><strong>البريد الإلكتروني</strong><span class="value">info@khayataosol.com</span></div>
+        </div>
+        <div class="contact-info-item" style="border-bottom:none;">
+          <i class="fa-solid fa-location-dot"></i>
+          <div><strong>نطاق الخدمة</strong><span class="value" style="direction:rtl;">شحن وتوصيل لجميع محافظات مصر (27 محافظة)</span></div>
+        </div>
+        <div class="social-row mt-3">
+          <a href="#" aria-label="فيسبوك"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="إنستجرام"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="تيك توك"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="https://wa.me/201090872716" aria-label="واتساب"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <div class="form-card" data-reveal>
+        <h3 class="mb-3">أرسل لنا رسالة</h3>
+        <form id="contact-form">
+          <div class="form-field">
+            <label for="c-name">الاسم بالكامل</label>
+            <input type="text" id="c-name" class="form-control" placeholder="اسمك" required>
+            <span class="form-error">برجاء إدخال الاسم</span>
+          </div>
+          <div class="form-field">
+            <label for="c-phone">رقم الهاتف</label>
+            <div class="phone-input-group">
+              <span class="country-code"><i class="fa-solid fa-flag"></i> 20+</span>
+              <input type="tel" id="c-phone" class="form-control" placeholder="01xxxxxxxxx" required>
+            </div>
+            <span class="form-error">رقم الهاتف غير صحيح</span>
+          </div>
+          <div class="form-field">
+            <label for="c-subject">الموضوع</label>
+            <select id="c-subject" class="form-control">
+              <option>استفسار عن منتج</option>
+              <option>استفسار عن طلب</option>
+              <option>الالتحاق بالأكاديمية</option>
+              <option>الدعم الفني والضمان</option>
+              <option>أخرى</option>
+            </select>
+          </div>
+          <div class="form-field mb-3">
+            <label for="c-message">رسالتك</label>
+            <textarea id="c-message" class="form-control" rows="4" placeholder="اكتب رسالتك هنا..." required></textarea>
+            <span class="form-error">برجاء كتابة رسالتك</span>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block"><i class="fa-solid fa-paper-plane"></i> إرسال الرسالة</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-alt">
+    <div class="container" style="max-width: 820px;">
+      <div class="section-head" data-reveal>
+        <span class="section-eyebrow">الأسئلة الشائعة</span>
+        <h2>عندك سؤال؟ يمكن نكون جاوبنا عليه</h2>
+      </div>
+      <div id="faq-list">
+        <div class="faq-item" data-reveal>
+          <div class="faq-question">كم تستغرق مدة التوصيل؟ <i class="fa-solid fa-chevron-down"></i></div>
+          <div class="faq-answer"><p>يصل طلبك خلال 2-4 أيام عمل لجميع محافظات مصر، مع تغليف مقاوم للصدمات للحفاظ على المنتج.</p></div>
+        </div>
+        <div class="faq-item" data-reveal>
+          <div class="faq-question">هل يوجد ضمان على الماكينات؟ <i class="fa-solid fa-chevron-down"></i></div>
+          <div class="faq-answer"><p>نعم، جميع منتجاتنا الأصلية مضمونة بعد البيع مع توفر قطع الغيار ودعم فني حقيقي عند الحاجة.</p></div>
+        </div>
+        <div class="faq-item" data-reveal>
+          <div class="faq-question">هل يمكن الدفع عند الاستلام؟ <i class="fa-solid fa-chevron-down"></i></div>
+          <div class="faq-answer"><p>بالتأكيد، نوفر خاصية الدفع عند الاستلام نقدًا لجميع الطلبات في جميع محافظات مصر.</p></div>
+        </div>
+        <div class="faq-item" data-reveal>
+          <div class="faq-question">كيف ألتحق بأكاديمية الأصول؟ <i class="fa-solid fa-chevron-down"></i></div>
+          <div class="faq-answer"><p>تواصل معنا عبر الهاتف أو واتساب أو نموذج التواصل، وسيقوم فريقنا بشرح البرامج التدريبية المتاحة ومواعيدها.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-col">
+        <div class="footer-brand"><img src="assets/images/logo.webp" alt="شعار للخياطة أصول"><strong>للخياطة أصول</strong></div>
+        <p>المنصة الأولى المتكاملة في عالم الخياطة: متجر أدوات، أكاديمية تعليم احترافي، ودعم فني حقيقي بعد البيع.</p>
+        <div class="social-row">
+          <a href="#" aria-label="فيسبوك"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="إنستجرام"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="تيك توك"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="https://wa.me/201090872716" aria-label="واتساب"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>روابط سريعة</h4>
+        <ul>
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="store.html">المتجر</a></li>
+          <li><a href="about.html">من نحن</a></li>
+          <li><a href="contact.html">تواصل معنا</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>حسابي</h4>
+        <ul>
+          <li><a href="login.html">تسجيل الدخول</a></li>
+          <li><a href="register.html">حساب جديد</a></li>
+          <li><a href="cart.html">سلة المشتريات</a></li>
+          <li><a href="account.html">طلباتي</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>تواصل معنا</h4>
+        <ul class="footer-contact">
+          <li><i class="fa-solid fa-phone"></i><span>01090872716</span></li>
+          <li><i class="fa-brands fa-whatsapp"></i><span>01090872716</span></li>
+          <li><i class="fa-solid fa-envelope"></i><span>info@khayataosol.com</span></li>
+          <li><i class="fa-solid fa-location-dot"></i><span>شحن لجميع محافظات مصر</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span data-year></span> للخياطة أصول. جميع الحقوق محفوظة.</span>
+      <span>صُنع بحب لأهل الأصول</span>
+    </div>
+  </div>
+</footer>
+<a href="https://wa.me/201090872716" class="whatsapp-float" target="_blank" rel="noopener" aria-label="تواصل عبر واتساب"><i class="fa-brands fa-whatsapp"></i></a>
+
+<script src="assets/vendor/gsap/gsap.min.js"></script>
+<script src="assets/vendor/gsap/ScrollTrigger.min.js"></script>
+<script src="assets/vendor/animejs/anime.min.js"></script>
+<script src="assets/js/products-data.js"></script>
+<script src="assets/js/cart.js"></script>
+<script src="assets/js/auth.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/anime-scroll.js"></script>
+<script src="assets/js/contact.js"></script>
+</body>
+</html>

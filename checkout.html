@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>إتمام الطلب | للخياطة أصول</title>
+<meta name="description" content="أكمل بيانات الشحن واطلب منتجاتك من متجر للخياطة أصول، الدفع عند الاستلام لكل محافظات مصر.">
+<link rel="icon" href="assets/images/logo.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@500;600;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+  .checkout-layout { display: grid; grid-template-columns: 1fr; gap: 32px; align-items: start; }
+  @media (min-width: 900px) { .checkout-layout { grid-template-columns: 1fr 360px; } }
+  .checkout-card { background: var(--color-white); border-radius: var(--radius-lg); box-shadow: var(--shadow-soft); padding: 28px; margin-bottom: 24px; }
+  .checkout-card h3 { margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  .checkout-card h3 i { color: var(--color-accent-dark); }
+  .payment-option { display: flex; align-items: center; gap: 12px; padding: 16px; border: 1.5px solid var(--color-border); border-radius: var(--radius-sm); cursor: pointer; }
+  .payment-option.selected { border-color: var(--color-primary); background: var(--color-bg-alt); }
+  .payment-option i { font-size: 22px; color: var(--color-primary); }
+  .mini-item { display: flex; justify-content: space-between; font-size: 14px; padding: 8px 0; border-bottom: 1px dashed var(--color-border); }
+  .mini-item span:first-child { color: var(--color-text-muted); }
+  .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 560px) { .row-2 { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="brand">
+      <img src="assets/images/logo.webp" alt="شعار للخياطة أصول">
+      <span class="brand-text"><strong>للخياطة أصول</strong><span>أدوات خياطة + تعليم احترافي</span></span>
+    </a>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="store.html">المتجر</a></li>
+        <li><a href="about.html">من نحن</a></li>
+        <li><a href="contact.html">تواصل معنا</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <a href="login.html" class="icon-btn" data-auth-account-link title="تسجيل الدخول"><i class="fa-solid fa-user"></i></a>
+      <a href="cart.html" class="icon-btn"><i class="fa-solid fa-cart-shopping"></i><span class="cart-badge">0</span></a>
+      <button class="nav-toggle" aria-label="القائمة"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </div>
+  <div class="mobile-nav">
+    <ul>
+      <li><a href="index.html">الرئيسية <i class="fa-solid fa-house"></i></a></li>
+      <li><a href="store.html">المتجر <i class="fa-solid fa-store"></i></a></li>
+      <li><a href="about.html">من نحن <i class="fa-solid fa-circle-info"></i></a></li>
+      <li><a href="contact.html">تواصل معنا <i class="fa-solid fa-envelope"></i></a></li>
+      <li><a href="login.html">حسابي <i class="fa-solid fa-user"></i></a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <div class="page-header">
+    <div class="container">
+      <h1>إتمام الطلب</h1>
+      <div class="breadcrumb"><a href="index.html">الرئيسية</a><span>/</span><a href="cart.html">السلة</a><span>/</span><span>إتمام الطلب</span></div>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+      <form class="checkout-layout" id="checkout-form">
+        <div>
+          <div class="checkout-card">
+            <h3><i class="fa-solid fa-truck"></i> بيانات الشحن</h3>
+            <div class="row-2">
+              <div class="form-field">
+                <label for="full-name">الاسم بالكامل</label>
+                <input type="text" id="full-name" class="form-control" placeholder="مثال: محمد أحمد" required>
+                <span class="form-error">برجاء إدخال الاسم بالكامل</span>
+              </div>
+              <div class="form-field">
+                <label for="phone">رقم الهاتف</label>
+                <div class="phone-input-group">
+                  <span class="country-code"><i class="fa-solid fa-flag"></i> 20+</span>
+                  <input type="tel" id="phone" class="form-control" placeholder="01xxxxxxxxx" required>
+                </div>
+                <span class="form-error">رقم الهاتف غير صحيح</span>
+              </div>
+            </div>
+            <div class="row-2">
+              <div class="form-field">
+                <label for="governorate">المحافظة</label>
+                <select id="governorate" class="form-control" required>
+                  <option value="">اختر المحافظة</option>
+                  <option>القاهرة</option><option>الجيزة</option><option>الإسكندرية</option>
+                  <option>الدقهلية</option><option>الشرقية</option><option>المنوفية</option>
+                  <option>القليوبية</option><option>البحيرة</option><option>الغربية</option>
+                  <option>أسيوط</option><option>المنيا</option><option>سوهاج</option>
+                  <option>بورسعيد</option><option>الإسماعيلية</option><option>السويس</option>
+                  <option>محافظة أخرى</option>
+                </select>
+                <span class="form-error">برجاء اختيار المحافظة</span>
+              </div>
+              <div class="form-field">
+                <label for="area">المنطقة / الحي</label>
+                <input type="text" id="area" class="form-control" placeholder="مثال: مدينة نصر" required>
+                <span class="form-error">برجاء إدخال المنطقة</span>
+              </div>
+            </div>
+            <div class="form-field">
+              <label for="address">العنوان بالتفصيل</label>
+              <textarea id="address" class="form-control" rows="3" placeholder="اسم الشارع، رقم العقار، علامة مميزة..." required></textarea>
+              <span class="form-error">برجاء إدخال العنوان بالتفصيل</span>
+            </div>
+            <div class="form-field mb-0">
+              <label for="notes">ملاحظات إضافية (اختياري)</label>
+              <textarea id="notes" class="form-control" rows="2" placeholder="مثال: التوصيل بعد الساعة 5 مساءً"></textarea>
+            </div>
+          </div>
+
+          <div class="checkout-card">
+            <h3><i class="fa-solid fa-wallet"></i> طريقة الدفع</h3>
+            <label class="payment-option selected">
+              <input type="radio" name="payment" value="cod" checked style="accent-color: var(--color-primary);">
+              <i class="fa-solid fa-money-bill-wave"></i>
+              <div><strong>الدفع عند الاستلام</strong><div class="form-hint">ادفع نقدًا للمندوب عند استلام طلبك</div></div>
+            </label>
+          </div>
+        </div>
+
+        <aside class="checkout-card summary-card" style="position: sticky; top: calc(var(--header-height) + 24px); margin-bottom:0;">
+          <h3><i class="fa-solid fa-receipt"></i> ملخص الطلب</h3>
+          <div id="checkout-items"></div>
+          <div class="summary-row"><span>المجموع الفرعي</span><span id="c-subtotal">0 ج.م</span></div>
+          <div class="summary-row"><span>الشحن</span><span id="c-shipping">0 ج.م</span></div>
+          <div class="summary-row total"><span>الإجمالي</span><span id="c-total">0 ج.م</span></div>
+          <button type="submit" class="btn btn-primary btn-block mt-3"><i class="fa-solid fa-check"></i> تأكيد الطلب</button>
+          <p class="form-hint text-center mt-2">بالضغط على "تأكيد الطلب" أنت توافق على شروط الشحن والدفع عند الاستلام.</p>
+        </aside>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom" style="border-top:none; padding-top:0;">
+      <span>© <span data-year></span> للخياطة أصول. جميع الحقوق محفوظة.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/vendor/gsap/gsap.min.js"></script>
+<script src="assets/vendor/gsap/ScrollTrigger.min.js"></script>
+<script src="assets/vendor/animejs/anime.min.js"></script>
+<script src="assets/js/products-data.js"></script>
+<script src="assets/js/cart.js"></script>
+<script src="assets/js/auth.js"></script>
+<script src="assets/js/render.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/checkout.js"></script>
+</body>
+</html>

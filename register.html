@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حساب جديد | للخياطة أصول</title>
+<meta name="description" content="أنشئ حسابًا جديدًا في متجر للخياطة أصول برقم هاتفك خلال دقيقة.">
+<link rel="icon" href="assets/images/logo.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@500;600;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+  .auth-page { min-height: 100vh; display: flex; align-items: center; padding: calc(var(--header-height) + 40px) 0 60px; background: linear-gradient(160deg, var(--color-bg-alt), var(--color-bg)); }
+  .step-hidden { display: none; }
+  .otp-resend { text-align: center; font-size: 14px; color: var(--color-text-muted); }
+  .otp-resend button { color: var(--color-primary); font-weight: 700; }
+  .demo-note { background: var(--color-bg-alt); border: 1px dashed var(--color-border-gold); border-radius: var(--radius-sm); padding: 10px 14px; font-size: 13px; color: var(--color-accent-dark); text-align:center; margin-bottom: 20px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="brand">
+      <img src="assets/images/logo.webp" alt="شعار للخياطة أصول">
+      <span class="brand-text"><strong>للخياطة أصول</strong><span>أدوات خياطة + تعليم احترافي</span></span>
+    </a>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="store.html">المتجر</a></li>
+        <li><a href="about.html">من نحن</a></li>
+        <li><a href="contact.html">تواصل معنا</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <a href="login.html" class="icon-btn" data-auth-account-link title="تسجيل الدخول"><i class="fa-solid fa-user"></i></a>
+      <a href="cart.html" class="icon-btn"><i class="fa-solid fa-cart-shopping"></i><span class="cart-badge">0</span></a>
+      <button class="nav-toggle" aria-label="القائمة"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </div>
+  <div class="mobile-nav">
+    <ul>
+      <li><a href="index.html">الرئيسية <i class="fa-solid fa-house"></i></a></li>
+      <li><a href="store.html">المتجر <i class="fa-solid fa-store"></i></a></li>
+      <li><a href="about.html">من نحن <i class="fa-solid fa-circle-info"></i></a></li>
+      <li><a href="contact.html">تواصل معنا <i class="fa-solid fa-envelope"></i></a></li>
+      <li><a href="login.html">حسابي <i class="fa-solid fa-user"></i></a></li>
+    </ul>
+  </div>
+</header>
+
+<main class="auth-page">
+  <div class="container">
+
+    <div class="auth-card" id="step-details" data-reveal>
+      <img src="assets/images/logo.webp" alt="شعار للخياطة أصول" class="logo-mark">
+      <h1>إنشاء حساب جديد</h1>
+      <p class="lead-sm">انضم إلى عائلة "للخياطة أصول" برقم هاتفك</p>
+
+      <form id="register-form">
+        <div class="form-field">
+          <label for="reg-name">الاسم بالكامل</label>
+          <input type="text" id="reg-name" class="form-control" placeholder="مثال: محمد أحمد" required>
+          <span class="form-error">برجاء إدخال الاسم بالكامل</span>
+        </div>
+        <div class="form-field">
+          <label for="reg-phone">رقم الهاتف</label>
+          <div class="phone-input-group">
+            <span class="country-code"><i class="fa-solid fa-flag"></i> 20+</span>
+            <input type="tel" id="reg-phone" class="form-control" placeholder="01xxxxxxxxx" required>
+          </div>
+          <span class="form-error">رقم الهاتف غير صحيح</span>
+        </div>
+        <div class="form-field">
+          <label for="reg-password">كلمة المرور</label>
+          <input type="password" id="reg-password" class="form-control" placeholder="6 أحرف على الأقل" required>
+          <span class="form-error">كلمة المرور يجب ألا تقل عن 6 أحرف</span>
+        </div>
+        <div class="form-field">
+          <label for="reg-password2">تأكيد كلمة المرور</label>
+          <input type="password" id="reg-password2" class="form-control" placeholder="أعد إدخال كلمة المرور" required>
+          <span class="form-error">كلمتا المرور غير متطابقتين</span>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" id="send-otp-btn"><i class="fa-solid fa-paper-plane"></i> إرسال رمز التحقق</button>
+      </form>
+
+      <p class="auth-switch">لديك حساب بالفعل؟ <a href="login.html">سجّل الدخول</a></p>
+    </div>
+
+    <div class="auth-card step-hidden" id="step-otp">
+      <img src="assets/images/logo.webp" alt="شعار للخياطة أصول" class="logo-mark">
+      <h1>تأكيد رقم الهاتف</h1>
+      <p class="lead-sm">أرسلنا رمز تحقق مكوّن من 4 أرقام إلى <strong id="otp-phone-display"></strong></p>
+      <div class="demo-note"><i class="fa-solid fa-circle-info"></i> نسخة تجريبية: رمز التحقق هو <strong>1234</strong></div>
+
+      <form id="otp-form">
+        <div class="otp-inputs">
+          <input type="text" inputmode="numeric" maxlength="1" class="otp-digit">
+          <input type="text" inputmode="numeric" maxlength="1" class="otp-digit">
+          <input type="text" inputmode="numeric" maxlength="1" class="otp-digit">
+          <input type="text" inputmode="numeric" maxlength="1" class="otp-digit">
+        </div>
+        <span class="form-error text-center" id="otp-error" style="display:none; text-align:center;">رمز التحقق غير صحيح</span>
+        <button type="submit" class="btn btn-primary btn-block mt-3"><i class="fa-solid fa-check"></i> تأكيد وإنشاء الحساب</button>
+      </form>
+      <p class="otp-resend mt-3">لم يصلك الرمز؟ <button type="button" id="resend-otp">إعادة الإرسال</button></p>
+    </div>
+
+  </div>
+</main>
+
+<script src="assets/vendor/gsap/gsap.min.js"></script>
+<script src="assets/vendor/gsap/ScrollTrigger.min.js"></script>
+<script src="assets/vendor/animejs/anime.min.js"></script>
+<script src="assets/js/products-data.js"></script>
+<script src="assets/js/cart.js"></script>
+<script src="assets/js/auth.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/auth-pages.js"></script>
+</body>
+</html>
