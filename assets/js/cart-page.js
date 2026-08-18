@@ -9,18 +9,18 @@
       '<div class="cart-item" data-reveal>' +
         '<img src="' + p.image + '" alt="' + p.name + '">' +
         '<div>' +
-          '<span class="cat">' + getCategoryById(p.category).name + '</span>' +
+          '<span class="cat">' + getCategoryById(p.category).name + (item.variationLabel ? ' · ' + item.variationLabel : '') + '</span>' +
           '<h3><a href="product.html?id=' + p.id + '">' + p.name + '</a></h3>' +
-          '<span class="price">' + formatPrice(p.price) + '</span>' +
+          '<span class="price">' + formatPrice(item.price) + '</span>' +
           '<div class="cart-qty mt-2">' +
-            '<button type="button" data-qty-inc="' + p.id + '"><i class="fa-solid fa-plus"></i></button>' +
+            '<button type="button" data-qty-inc="' + item.cartKey + '"><i class="fa-solid fa-plus"></i></button>' +
             '<input type="text" readonly value="' + item.qty + '">' +
-            '<button type="button" data-qty-dec="' + p.id + '"><i class="fa-solid fa-minus"></i></button>' +
+            '<button type="button" data-qty-dec="' + item.cartKey + '"><i class="fa-solid fa-minus"></i></button>' +
           '</div>' +
         '</div>' +
         '<div class="cart-item-actions">' +
-          '<strong class="price">' + formatPrice(p.price * item.qty) + '</strong>' +
-          '<button class="remove-btn" data-remove="' + p.id + '"><i class="fa-solid fa-trash"></i> إزالة</button>' +
+          '<strong class="price">' + formatPrice(item.price * item.qty) + '</strong>' +
+          '<button class="remove-btn" data-remove="' + item.cartKey + '"><i class="fa-solid fa-trash"></i> إزالة</button>' +
         '</div>' +
       '</div>'
     );
@@ -53,14 +53,14 @@
     var rem = e.target.closest('[data-remove]');
     if (inc) {
       var cart1 = getCart();
-      var id1 = inc.getAttribute('data-qty-inc');
-      var product1 = getProductById(id1);
-      setQty(id1, Math.min(product1.stock, (cart1[id1] || 0) + 1));
+      var key1 = inc.getAttribute('data-qty-inc');
+      var product1 = getProductById(parseCartKey(key1).productId);
+      setQty(key1, Math.min(product1.stock, (cart1[key1] || 0) + 1));
       render();
     } else if (dec) {
       var cart2 = getCart();
-      var id2 = dec.getAttribute('data-qty-dec');
-      setQty(id2, Math.max(1, (cart2[id2] || 0) - 1));
+      var key2 = dec.getAttribute('data-qty-dec');
+      setQty(key2, Math.max(1, (cart2[key2] || 0) - 1));
       render();
     } else if (rem) {
       removeFromCart(rem.getAttribute('data-remove'));

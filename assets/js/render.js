@@ -11,6 +11,10 @@ function starsHTML(rating) {
 
 function productCardHTML(p) {
   var cat = getCategoryById(p.category);
+  var hasVariations = !!p.variations;
+  var actionBtn = hasVariations
+    ? '<a href="product.html?id=' + p.id + '" class="add-cart-btn" aria-label="اختر المقاس"><i class="fa-solid fa-arrow-left"></i></a>'
+    : '<button class="add-cart-btn" data-add-to-cart="' + p.id + '" aria-label="أضف للسلة"><i class="fa-solid fa-cart-plus"></i></button>';
   return (
     '<div class="card product-card" data-reveal>' +
       '<a href="product.html?id=' + p.id + '" class="product-media">' +
@@ -22,10 +26,11 @@ function productCardHTML(p) {
         '<a href="product.html?id=' + p.id + '"><h3>' + p.name + '</h3></a>' +
         '<div class="rating">' + starsHTML(p.rating) + ' <span style="color:var(--color-text-muted)">(' + p.reviews + ')</span></div>' +
         '<div class="product-price-row">' +
-          '<div><span class="price">' + formatPrice(p.price) + '</span>' +
+          '<div>' + (hasVariations ? '<span class="form-hint" style="display:block;">يبدأ من</span>' : '') +
+          '<span class="price">' + formatPrice(p.price) + '</span>' +
           (p.oldPrice ? '<span class="price-old">' + formatPrice(p.oldPrice) + '</span>' : '') +
           '</div>' +
-          '<button class="add-cart-btn" data-add-to-cart="' + p.id + '" aria-label="أضف للسلة"><i class="fa-solid fa-cart-plus"></i></button>' +
+          actionBtn +
         '</div>' +
       '</div>' +
     '</div>'

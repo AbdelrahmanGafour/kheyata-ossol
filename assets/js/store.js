@@ -48,6 +48,8 @@
   function render() {
     var results = applyFilters();
     document.getElementById('results-count').textContent = results.length;
+    var applyCount = document.getElementById('filters-apply-count');
+    if (applyCount) applyCount.textContent = results.length;
     renderInto('#store-grid', results.map(productCardHTML));
     document.getElementById('empty-state').style.display = results.length ? 'none' : 'block';
     if (typeof gsap !== 'undefined') {
@@ -55,14 +57,40 @@
     }
   }
 
-  function renderNewestProducts() {
-    var newest = PRODUCTS.slice(-8).reverse();
-    renderInto('#newest-products', newest.map(productCardHTML));
+  /* لوحة الفلاتر المنزلقة على الموبايل والتابلت */
+  function initFiltersDrawer() {
+    var toggle = document.getElementById('filter-toggle');
+    var panel = document.getElementById('filters-card');
+    var backdrop = document.getElementById('filters-backdrop');
+    var closeBtn = document.getElementById('filters-close');
+    var applyBtn = document.getElementById('filters-apply');
+    if (!toggle || !panel) return;
+
+    function openDrawer() {
+      panel.classList.add('is-open');
+      backdrop.classList.add('is-open');
+      document.body.classList.add('filters-open');
+      toggle.setAttribute('aria-expanded', 'true');
+    }
+    function closeDrawer() {
+      panel.classList.remove('is-open');
+      backdrop.classList.remove('is-open');
+      document.body.classList.remove('filters-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+
+    toggle.addEventListener('click', openDrawer);
+    closeBtn.addEventListener('click', closeDrawer);
+    backdrop.addEventListener('click', closeDrawer);
+    applyBtn.addEventListener('click', closeDrawer);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && panel.classList.contains('is-open')) closeDrawer();
+    });
   }
 
   document.addEventListener('DOMContentLoaded', function () {
     buildCategoryFilters();
-    renderNewestProducts();
+    initFiltersDrawer();
 
     var priceRange = document.getElementById('price-range');
     var priceValue = document.getElementById('price-range-value');

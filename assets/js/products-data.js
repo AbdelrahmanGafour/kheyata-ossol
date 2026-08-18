@@ -1,4 +1,4 @@
-/* بيانات المنتجات — تجريبية لمتجر "للخياطة أصول" */
+/* بيانات المنتجات — متجر "للخياطة أصول" */
 
 window.CATEGORIES = [
   { id: 'machines', name: 'مكن الخياطة', icon: 'fa-solid fa-gear' },
@@ -12,198 +12,142 @@ window.CATEGORIES = [
 window.PRODUCTS = [
   {
     id: 'p01',
-    name: 'ماكينة خياطة منزلية احترافية',
-    category: 'machines',
-    price: 4200,
-    oldPrice: 4800,
-    image: 'assets/images/products/product-sewing-machine.jpg',
+    name: 'مقص عينات كهربائي',
+    category: 'cutting',
+    price: 1850,
+    oldPrice: 1950,
+    image: 'assets/images/products/مقص عينات كهربائي.webp',
+    images: ['assets/images/products/مقص عينات كهربائي.webp', 'assets/images/products/مقص عينات كهربائي 2.webp'],
     rating: 4.8,
-    reviews: 62,
+    reviews: 34,
     badge: 'الأكثر مبيعًا',
-    stock: 14,
-    description: 'ماكينة خياطة منزلية أصلية بمحرك قوي وهادئ، مناسبة للمبتدئين والمحترفين، تدعم أكثر من 20 نوع غرزة مع ضمان قطع غيار.'
+    stock: 12,
+    description: 'مقص عينات كهربائي عالي الكفاءة لقص الأقمشة والعينات بسرعة ودقة عالية، يوفر الوقت والمجهود في الورش والمصانع مقارنة بالقص اليدوي، وبناء متين يتحمل الاستخدام المكثف.'
   },
   {
     id: 'p02',
-    name: 'ماكينة خياطة صناعية',
-    category: 'machines',
-    price: 8900,
-    oldPrice: null,
-    image: 'assets/images/products/product-industrial-machine.jpg',
-    rating: 4.9,
-    reviews: 31,
-    badge: 'أداء عالي',
-    stock: 6,
-    description: 'ماكينة صناعية مخصصة للورش وخطوط الإنتاج، سرعة تشغيل عالية وثبات ممتاز في الغرز على الأقمشة السميكة.'
+    name: 'مكبس كباسين يدوي',
+    category: 'accessories',
+    price: 350,
+    oldPrice: 400,
+    image: 'assets/images/products/مكبس كباسين يدوي.webp',
+    rating: 4.5,
+    reviews: 41,
+    badge: 'خصم',
+    stock: 25,
+    description: 'مكبس يدوي لتركيب الكباسين والأزرار الضاغطة على الأقمشة بإحكام واحترافية، سهل الاستخدام ومناسب للورش والاستخدام المنزلي المتكرر.'
   },
   {
     id: 'p03',
-    name: 'ماكينة خياطة تراثية نادرة',
+    name: 'جهاز تني وتركيب استك اوتوماتيك مستورد',
     category: 'machines',
-    price: 6500,
-    oldPrice: 7200,
-    image: 'assets/images/hero/hero-vintage.jpg',
-    rating: 5,
-    reviews: 18,
-    badge: 'نادرة',
-    stock: 3,
-    description: 'قطعة تراثية أصلية من نوادر ماكينات الخياطة، تحفة فنية تجمع بين الجمال الكلاسيكي وكفاءة التشغيل.'
+    price: 1850,
+    oldPrice: 1950,
+    image: 'assets/images/products/جهاز تني وتركيب استك اوتوماتيك مستورد.webp',
+    rating: 4.9,
+    reviews: 17,
+    badge: 'مستورد',
+    stock: 6,
+    description: 'جهاز مستورد لتنّي وتركيب الأستك أوتوماتيكيًا بسرعة ودقة عالية، يقلل المجهود ووقت التصنيع مع نتائج ثابتة الجودة في كل قطعة.'
   },
   {
     id: 'p04',
-    name: 'ماكينة خياطة متنقلة صغيرة',
-    category: 'machines',
-    price: 1450,
+    name: 'مقص pin الاحمر',
+    category: 'cutting',
+    price: 420,
     oldPrice: null,
-    image: 'assets/images/tailor-machine-2.jpg',
-    rating: 4.5,
-    reviews: 44,
-    badge: null,
-    stock: 22,
-    description: 'ماكينة خفيفة الوزن سهلة الحمل، مثالية للتدريب المنزلي والإصلاحات السريعة والمشاريع الصغيرة.'
+    image: 'assets/images/products/مقص pin الاحمر.webp',
+    rating: 4.7,
+    reviews: 23,
+    badge: 'مقاسات متعددة',
+    stock: 40,
+    description: 'مقص تفريز احترافي (Pin) يعطي حواف مسننة أنيقة ويمنع تنسل الأقمشة، متوفر بثلاثة مقاسات لتناسب كل احتياجات القص والتفصيل.',
+    variations: {
+      label: 'المقاس',
+      options: [
+        { label: 'مقاس 8', price: 420 },
+        { label: 'مقاس 10', price: 460 },
+        { label: 'مقاس 12', price: 520 }
+      ]
+    }
   },
   {
     id: 'p05',
-    name: 'مقص قماش احترافي ستانلس',
-    category: 'cutting',
-    price: 350,
-    oldPrice: 420,
-    image: 'assets/images/products/product-scissors.jpg',
-    rating: 4.7,
-    reviews: 88,
+    name: 'مسطره تحديد مقاس',
+    category: 'measuring',
+    price: 420,
+    oldPrice: 470,
+    image: 'assets/images/products/مسطره تحديد مقاس.webp',
+    rating: 4.8,
+    reviews: 52,
     badge: 'خصم',
-    stock: 40,
-    description: 'مقص خياطة مصنوع من الستانلس ستيل الفاخر، حواف حادة تدوم طويلًا مع قبضة مريحة للاستخدام الممتد.'
+    stock: 30,
+    description: 'مسطرة معدنية دقيقة لتحديد المقاسات بسهولة واحترافية أثناء التفصيل والقص، من الأدوات الأساسية في كل ورشة خياطة.'
   },
   {
     id: 'p06',
-    name: 'عجلة قص دوارة Rotary Cutter',
-    category: 'cutting',
-    price: 280,
-    oldPrice: null,
-    image: 'assets/images/products/product-fabric-cutting.jpg',
+    name: 'دكاكه حلزون',
+    category: 'accessories',
+    price: 550,
+    oldPrice: 600,
+    image: 'assets/images/products/دكاكه حلزون.webp',
     rating: 4.6,
-    reviews: 27,
-    badge: 'جديد',
-    stock: 30,
-    description: 'أداة قص دوارة دقيقة لتقطيع طبقات القماش المتعددة بخط مستقيم ونظيف، مثالية لهواة الباتشورك.'
+    reviews: 15,
+    badge: 'خصم',
+    stock: 18,
+    description: 'دكاكة حلزونية لعمل العراوي وتثبيت الكبسات بدقة وثبات، تصميم متين يدوم طويلًا مع الاستخدام المكثف في الورش.'
   },
   {
     id: 'p07',
-    name: 'مسطرة تحديد مقاس عراوي وزراير',
-    category: 'measuring',
-    price: 420,
-    oldPrice: null,
-    image: 'assets/images/about/about-workshop.jpg',
-    rating: 4.9,
-    reviews: 53,
-    badge: 'الأكثر طلبًا',
-    stock: 25,
-    description: 'مسطرة معدنية دقيقة لتحديد أماكن العراوي والأزرار بسهولة واحترافية، من أدوات الأصول الأساسية في كل ورشة.'
+    name: 'درج لمكينات الخياطه',
+    category: 'accessories',
+    price: 550,
+    oldPrice: 600,
+    image: 'assets/images/products/درج لمكينات الخياطه.webp',
+    rating: 4.4,
+    reviews: 19,
+    badge: null,
+    stock: 22,
+    description: 'درج عملي لتنظيم أدوات الخياطة بجانب الماكينة، سهل التركيب ويوفر مساحة تخزين إضافية للإبر والخيوط والملحقات.'
   },
   {
     id: 'p08',
-    name: 'شريط قياس احترافي مزدوج',
+    name: 'علبة مسطرة تني الأورلية',
     category: 'measuring',
-    price: 65,
-    oldPrice: null,
-    image: 'assets/images/about/measuring-waist.jpg',
-    rating: 4.4,
-    reviews: 71,
-    badge: null,
-    stock: 120,
-    description: 'شريط قياس مرن بمقاسين (سم وبوصة)، لا يتمدد ولا يتقطع، أساسي لكل خياط ومصمم أزياء.'
+    price: 450,
+    oldPrice: 550,
+    image: 'assets/images/products/علبة مسطرة تني الأورلية.webp',
+    rating: 4.7,
+    reviews: 12,
+    badge: 'خصم',
+    stock: 14,
+    description: 'علبة مع مسطرة مخصصة لضبط تنّي الأورلية بدقة، تحافظ على الأداة من التلف وتسهّل استخدامها أثناء العمل.'
   },
   {
     id: 'p09',
-    name: 'طقم إبر خياطة متنوعة',
-    category: 'thread',
-    price: 90,
-    oldPrice: null,
-    image: 'assets/images/products/product-needle-closeup.jpg',
-    rating: 4.3,
-    reviews: 39,
-    badge: null,
-    stock: 90,
-    description: 'مجموعة إبر بمقاسات مختلفة تناسب كافة أنواع الأقمشة من الحرير الرقيق إلى الجينز السميك.'
+    name: 'دواسه تني متحركك',
+    category: 'accessories',
+    price: 360,
+    oldPrice: 400,
+    image: 'assets/images/products/دواسه تني متحركك.webp',
+    rating: 4.5,
+    reviews: 21,
+    badge: 'خصم',
+    stock: 27,
+    description: 'دواسة متحركة لتنّي الأستك أثناء التفصيل، تمنح تحكمًا أفضل وسرعة أعلى في الإنتاج مقارنة بالطرق التقليدية.'
   },
   {
     id: 'p10',
-    name: 'بكر خيوط ملونة (طقم 40 لون)',
-    category: 'thread',
-    price: 220,
-    oldPrice: 260,
-    image: 'assets/images/thread-spools-wall.jpg',
-    rating: 4.8,
-    reviews: 65,
-    badge: 'خصم',
-    stock: 35,
-    description: 'طقم بكر خيوط بولي إستر عالي الجودة بـ40 درجة لون، مقاوم للتلف والبهتان.'
-  },
-  {
-    id: 'p11',
-    name: 'بكر خيوط حرير فاخر',
-    category: 'thread',
-    price: 260,
-    oldPrice: null,
-    image: 'assets/images/thread-spools-2.jpg',
+    name: 'متر قياس إلكتروني',
+    category: 'measuring',
+    price: 650,
+    oldPrice: 700,
+    image: 'assets/images/products/متر قياس إلكتروني.webp',
     rating: 4.6,
-    reviews: 21,
-    badge: null,
-    stock: 18,
-    description: 'خيوط حريرية فاخرة بلمعان مميز، مناسبة للتطريز والقطع الراقية والفساتين.'
-  },
-  {
-    id: 'p12',
-    name: 'طقم تطريز متكامل',
-    category: 'thread',
-    price: 310,
-    oldPrice: null,
-    image: 'assets/images/thread-scissors-embroidery.jpg',
-    rating: 4.7,
-    reviews: 16,
-    badge: 'جديد',
+    reviews: 29,
+    badge: 'الأكثر طلبًا',
     stock: 20,
-    description: 'طقم تطريز يحتوي على خيوط ملونة ومقص صغير دقيق وإبر تطريز مخصصة لهواة الأعمال اليدوية.'
-  },
-  {
-    id: 'p13',
-    name: 'قماش قطني أبيض عالي الجودة (المتر)',
-    category: 'fabric',
-    price: 85,
-    oldPrice: null,
-    image: 'assets/images/cutting-cloth.jpg',
-    rating: 4.5,
-    reviews: 33,
-    badge: null,
-    stock: 200,
-    description: 'قماش قطني 100% بجودة تصدير، ناعم الملمس ومناسب لجميع أنواع التفصيل والتطريز.'
-  },
-  {
-    id: 'p14',
-    name: 'طقم أدوات خياطة متكامل',
-    category: 'accessories',
-    price: 480,
-    oldPrice: 550,
-    image: 'assets/images/sewing-supplies-flatlay.jpg',
-    rating: 4.9,
-    reviews: 47,
-    badge: 'باقة متكاملة',
-    stock: 15,
-    description: 'كل ما يحتاجه المبتدئ في مكان واحد: إبر، دبابيس، مقص صغير، شريط قياس، وخيوط أساسية داخل حقيبة أنيقة.'
-  },
-  {
-    id: 'p15',
-    name: 'قدم ضاغطة متعددة الاستخدامات',
-    category: 'accessories',
-    price: 150,
-    oldPrice: null,
-    image: 'assets/images/products/product-presser-foot.jpg',
-    rating: 4.4,
-    reviews: 12,
-    badge: null,
-    stock: 50,
-    description: 'قدم ضاغطة قابلة للتركيب على أغلب ماكينات الخياطة المنزلية، تسهّل غرز السحاب والحواف والزراير.'
+    description: 'متر قياس إلكتروني رقمي يعرض القياسات بدقة وسرعة، بديل عملي وموفّر للوقت عن المتر التقليدي في أعمال التفصيل والقص.'
   },
 ];
 
@@ -212,4 +156,10 @@ function getProductById(id) {
 }
 function getCategoryById(id) {
   return window.CATEGORIES.find(function (c) { return c.id === id; });
+}
+
+/* يبحث عن خيار تنويع بعينه ضمن منتج (يُستخدم عند حساب سعر عنصر في السلة) */
+function getVariationOption(product, optionLabel) {
+  if (!product || !product.variations) return null;
+  return product.variations.options.find(function (o) { return o.label === optionLabel; }) || null;
 }

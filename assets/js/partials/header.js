@@ -30,7 +30,7 @@
           '<li><a href="store.html">المتجر <i class="fa-solid fa-store"></i></a></li>' +
           '<li><a href="about.html">من نحن <i class="fa-solid fa-circle-info"></i></a></li>' +
           '<li><a href="contact.html">تواصل معنا <i class="fa-solid fa-envelope"></i></a></li>' +
-          '<li><a href="login.html">حسابي <i class="fa-solid fa-user"></i></a></li>' +
+          '<li><a href="login.html" data-auth-account-link>حسابي <i class="fa-solid fa-user"></i></a></li>' +
         '</ul>' +
       '</div>' +
     '</header>';

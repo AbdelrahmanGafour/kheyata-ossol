@@ -21,6 +21,28 @@
   .stock-badge { display: inline-flex; align-items: center; gap: 6px; color: var(--color-primary); font-size: 14px; font-weight: 700; }
   .feature-mini { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--color-text-muted); }
   .feature-mini i { color: var(--color-accent-dark); }
+
+  /* معرض الصور المصغّرة */
+  .gallery-thumbs { display: flex; gap: 10px; margin-top: 12px; }
+  .gallery-thumb { width: 64px; height: 64px; border-radius: var(--radius-sm); overflow: hidden; border: 2px solid transparent; padding: 0; flex-shrink: 0; opacity: .65; transition: opacity .2s ease, border-color .2s ease; }
+  .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; border-radius: 0; box-shadow: none; }
+  .gallery-thumb:hover { opacity: 1; }
+  .gallery-thumb.is-active { opacity: 1; border-color: var(--color-accent); }
+
+  /* منتقي التنويعات (المقاسات) */
+  .variation-options { display: flex; flex-wrap: wrap; gap: 10px; }
+  .variation-option {
+    padding: 10px 20px;
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-white);
+    color: var(--color-text);
+    font-weight: 700;
+    font-size: 14px;
+    transition: border-color .2s ease, background .2s ease, color .2s ease;
+  }
+  .variation-option:hover { border-color: var(--color-primary); }
+  .variation-option.is-selected { border-color: var(--color-primary); background: var(--color-primary); color: var(--color-white); }
 </style>
 </head>
 <body>

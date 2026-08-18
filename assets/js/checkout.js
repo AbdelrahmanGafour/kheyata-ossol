@@ -4,10 +4,11 @@
   'use strict';
 
   function miniItemHTML(item) {
+    var name = item.product.name + (item.variationLabel ? ' (' + item.variationLabel + ')' : '');
     return (
       '<div class="mini-item">' +
-        '<span>' + item.product.name + ' × ' + item.qty + '</span>' +
-        '<span>' + formatPrice(item.product.price * item.qty) + '</span>' +
+        '<span>' + name + ' × ' + item.qty + '</span>' +
+        '<span>' + formatPrice(item.price * item.qty) + '</span>' +
       '</div>'
     );
   }
@@ -64,7 +65,14 @@
       address: document.getElementById('address').value.trim(),
       notes: document.getElementById('notes').value.trim(),
       payment: 'الدفع عند الاستلام',
-      items: getCartItems().map(function (i) { return { id: i.product.id, name: i.product.name, price: i.product.price, qty: i.qty }; }),
+      items: getCartItems().map(function (i) {
+        return {
+          id: i.product.id,
+          name: i.product.name + (i.variationLabel ? ' (' + i.variationLabel + ')' : ''),
+          price: i.price,
+          qty: i.qty
+        };
+      }),
       subtotal: getCartSubtotal(),
       shipping: getShippingCost(),
       total: getCartTotal()

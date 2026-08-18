@@ -20,8 +20,11 @@
   .contact-info-item { display: flex; align-items: center; gap: 16px; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,.15); }
   .contact-info-item i { width: 46px; height: 46px; border-radius: 50%; background: rgba(255,255,255,.12); display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--color-accent-light); flex-shrink: 0; }
   .contact-info-item strong { display: block; font-size: 14px; }
-  .contact-info-item span.value { color: rgba(255,255,255,.85); font-size: 14px; direction: ltr; display: inline-block; }
+  .contact-info-item span.value { color: rgba(255,255,255,.85); font-size: 14px; direction: ltr; display: inline-block; overflow-wrap: anywhere; }
   .form-card { background: var(--color-white); border-radius: var(--radius-lg); box-shadow: var(--shadow-soft); padding: 36px; }
+  @media (max-width: 340px) {
+    .contact-info-card, .form-card { padding: 24px 20px; }
+  }
   .faq-item { background: var(--color-white); border-radius: var(--radius-md); box-shadow: var(--shadow-soft); margin-bottom: 14px; overflow: hidden; }
   .faq-question { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; cursor: pointer; font-family: var(--font-heading); font-weight: 600; }
   .faq-question i { transition: transform .3s ease; color: var(--color-accent-dark); }

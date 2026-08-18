@@ -44,14 +44,33 @@ function clearCart() {
   updateCartBadge();
 }
 
+/* مفتاح عنصر السلة: "productId" للمنتجات العادية، أو "productId::تسمية التنويع"
+   للمنتجات ذات المتغيرات (مثل المقاسات)، حتى يُحسب كل تنويع كسطر منفصل بسعره الخاص */
+function buildCartKey(productId, variationLabel) {
+  return variationLabel ? (productId + '::' + variationLabel) : productId;
+}
+
+function parseCartKey(key) {
+  var parts = key.split('::');
+  return { productId: parts[0], variationLabel: parts[1] || null };
+}
+
 function getCartItems() {
   var cart = getCart();
   var items = [];
-  Object.keys(cart).forEach(function (id) {
-    var product = typeof getProductById === 'function' ? getProductById(id) : null;
-    if (product) {
-      items.push({ product: product, qty: cart[id] });
-    }
+  Object.keys(cart).forEach(function (key) {
+    var parsed = parseCartKey(key);
+    var product = typeof getProductById === 'function' ? getProductById(parsed.productId) : null;
+    if (!product) return;
+    var variation = parsed.variationLabel ? getVariationOption(product, parsed.variationLabel) : null;
+    var price = variation ? variation.price : product.price;
+    items.push({
+      cartKey: key,
+      product: product,
+      qty: cart[key],
+      variationLabel: parsed.variationLabel,
+      price: price
+    });
   });
   return items;
 }
@@ -62,7 +81,7 @@ function getCartCount() {
 }
 
 function getCartSubtotal() {
-  return getCartItems().reduce(function (sum, item) { return sum + item.product.price * item.qty; }, 0);
+  return getCartItems().reduce(function (sum, item) { return sum + item.price * item.qty; }, 0);
 }
 
 var SHIPPING_COST = 60;

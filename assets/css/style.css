@@ -96,6 +96,7 @@ p { color: var(--color-text-muted); }
   max-width: var(--container-max);
   margin: 0 auto;
   padding: 0 24px;
+  min-width: 0; /* يمنع تمدّد الحاوية داخل أب Flex (مثل .auth-page) بسبب عناصر ذات عرض ثابت بداخلها */
 }
 
 @media (min-width: 900px) {
@@ -226,7 +227,7 @@ section { padding: 56px 0; }
 .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
 .brand img { height: 56px; width: 56px; border-radius: 50%; flex-shrink: 0; }
 .brand-text { display: flex; flex-direction: column; font-family: var(--font-heading); min-width: 0; }
-.brand-text strong { font-size: 18px; color: var(--color-primary); white-space: nowrap; }
+.brand-text strong { font-size: 18px; color: var(--color-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
 .brand-text span { font-size: 12px; color: var(--color-accent-dark); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 @media (max-width: 560px) {
@@ -254,7 +255,7 @@ section { padding: 56px 0; }
   background: var(--color-primary);
   color: var(--color-white);
 }
-@media (min-width: 1100px) { .main-nav { display: block; } }
+@media (min-width: 900px) { .main-nav { display: block; } }
 
 .header-actions { display: flex; align-items: center; gap: 10px; }
 .icon-btn {
@@ -273,6 +274,9 @@ section { padding: 56px 0; }
 }
 .icon-btn:hover { background: var(--color-primary); color: var(--color-white); transform: translateY(-2px); }
 .icon-btn:active { transform: scale(.92); }
+/* أيقونة الحساب تظهر فقط في الهيدر لسطح المكتب؛ على الموبايل والتابلت تبقى متاحة داخل القائمة المنسدلة فقط */
+.header-actions [data-auth-account-link] { display: none; }
+@media (min-width: 900px) { .header-actions [data-auth-account-link] { display: flex; } }
 .cart-badge {
   position: absolute;
   top: -4px;
@@ -298,7 +302,7 @@ section { padding: 56px 0; }
   color: #fff;
   font-size: 18px;
 }
-@media (min-width: 1100px) { .nav-toggle { display: none; } }
+@media (min-width: 900px) { .nav-toggle { display: none; } }
 
 .mobile-nav {
   position: fixed;
@@ -365,7 +369,8 @@ body.nav-open { overflow: hidden; }
   color: var(--color-white);
   max-width: 1140px;
   width: 100%;
-  padding: var(--space-7) 0;
+  padding-top: var(--space-7);
+  padding-bottom: var(--space-7);
 }
 .hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
@@ -465,21 +470,35 @@ body.nav-open { overflow: hidden; }
   text-align: end;
 }
 
-/* ---------- كاروسيل أفقي (التصنيفات) ---------- */
-.carousel-wrap { position: relative; }
+/* ---------- كاروسيل أفقي: بطاقة واحدة تظهر في المنتصف بالكامل بدون أي جزء من البطاقة التالية ---------- */
+/* المسار نفسه هو "نافذة" عرضها مطابق تمامًا لعرض البطاقة، فلا يظهر منها سوى بطاقة واحدة كاملة، والسهمان يقفان بجانبها كعناصر عادية داخل صف مرن يتوسّط القسم */
+.carousel-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  max-width: 100%;
+  margin: 0 auto;
+}
 .carousel-track {
   display: flex;
   gap: 20px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  padding: 4px 4px 12px;
+  padding: 4px 0 12px;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
+  flex: 0 0 auto;
+  width: 180px;
 }
+@media (min-width: 640px) { .carousel-track { width: 220px; } }
+.carousel-track.products { width: 230px; }
+@media (min-width: 640px) { .carousel-track.products { width: 270px; } }
 .carousel-track::-webkit-scrollbar { display: none; }
 .carousel-track > * {
-  scroll-snap-align: start;
+  scroll-snap-align: center;
   flex: 0 0 auto;
   width: 180px;
 }
@@ -487,29 +506,27 @@ body.nav-open { overflow: hidden; }
 .carousel-track.products > * { width: 230px; }
 @media (min-width: 640px) { .carousel-track.products > * { width: 270px; } }
 .carousel-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 46px; height: 46px;
+  flex: 0 0 auto;
+  width: 38px; height: 38px;
   border-radius: 50%;
   background: var(--color-white);
   color: var(--color-primary);
   border: 1px solid var(--color-border-gold);
   box-shadow: var(--shadow-soft);
   display: flex; align-items: center; justify-content: center;
-  font-size: 15px;
+  font-size: 13px;
   z-index: 5;
   transition: background .2s ease, color .2s ease, transform .2s ease;
 }
 .carousel-arrow:hover { background: var(--color-primary); color: var(--color-white); }
-.carousel-arrow:active { transform: translateY(-50%) scale(.9); }
-.carousel-arrow-prev { right: -8px; }
-.carousel-arrow-next { left: -8px; }
-@media (min-width: 900px) {
-  .carousel-arrow-prev { right: -22px; }
-  .carousel-arrow-next { left: -22px; }
+.carousel-arrow:active { transform: scale(.9); }
+@media (min-width: 640px) {
+  .carousel-arrow { width: 46px; height: 46px; font-size: 15px; }
 }
-@media (max-width: 560px) { .carousel-arrow { display: none; } }
+/* المؤشر يتحول ليد سحب فوق المسار على الأجهزة التي تدعم الماوس (سطح المكتب) */
+.carousel-track { cursor: grab; }
+.carousel-track.is-dragging { cursor: grabbing; scroll-snap-type: none; scroll-behavior: auto; }
+.carousel-track.is-dragging > * { pointer-events: none; }
 
 .scroll-cue {
   position: absolute;
@@ -586,6 +603,7 @@ body.nav-open { overflow: hidden; }
 .grid-4 { grid-template-columns: 1fr; }
 @media (min-width: 640px) {
   .grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
 }
 @media (min-width: 900px) {
@@ -719,6 +737,11 @@ body.nav-open { overflow: hidden; }
   border-radius: var(--radius-sm);
 }
 .otp-inputs input:focus { outline: none; border-color: var(--color-primary); }
+@media (max-width: 360px) {
+  .auth-card { padding: 32px 20px; }
+  .otp-inputs { gap: 8px; }
+  .otp-inputs input { width: 40px; height: 50px; font-size: 20px; }
+}
 .auth-switch { text-align: center; margin-top: 24px; font-size: 14px; color: var(--color-text-muted); }
 .auth-switch a { color: var(--color-primary); font-weight: 700; }
 
