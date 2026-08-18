@@ -470,15 +470,15 @@ body.nav-open { overflow: hidden; }
   text-align: end;
 }
 
-/* ---------- كاروسيل أفقي: بطاقة واحدة تظهر في المنتصف بالكامل بدون أي جزء من البطاقة التالية ---------- */
-/* المسار نفسه هو "نافذة" عرضها مطابق تمامًا لعرض البطاقة، فلا يظهر منها سوى بطاقة واحدة كاملة، والسهمان يقفان بجانبها كعناصر عادية داخل صف مرن يتوسّط القسم */
+/* ---------- كاروسيل أفقي ----------
+   الموبايل والتابلت (أقل من 900px): بطاقة واحدة تظهر في المنتصف بالكامل، بدون أي جزء من البطاقة التالية.
+   سطح المكتب (900px فأكثر): عدة بطاقات في الصف كالتصميم الأصلي. */
 .carousel-wrap {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  max-width: 100%;
   margin: 0 auto;
 }
 .carousel-track {
@@ -493,18 +493,14 @@ body.nav-open { overflow: hidden; }
   flex: 0 0 auto;
   width: 180px;
 }
-@media (min-width: 640px) { .carousel-track { width: 220px; } }
-.carousel-track.products { width: 230px; }
-@media (min-width: 640px) { .carousel-track.products { width: 270px; } }
 .carousel-track::-webkit-scrollbar { display: none; }
 .carousel-track > * {
   scroll-snap-align: center;
   flex: 0 0 auto;
   width: 180px;
 }
-@media (min-width: 640px) { .carousel-track > * { width: 220px; } }
+.carousel-track.products { width: 230px; }
 .carousel-track.products > * { width: 230px; }
-@media (min-width: 640px) { .carousel-track.products > * { width: 270px; } }
 .carousel-arrow {
   flex: 0 0 auto;
   width: 38px; height: 38px;
@@ -521,7 +517,25 @@ body.nav-open { overflow: hidden; }
 .carousel-arrow:hover { background: var(--color-primary); color: var(--color-white); }
 .carousel-arrow:active { transform: scale(.9); }
 @media (min-width: 640px) {
+  .carousel-track { width: 220px; }
+  .carousel-track > * { width: 220px; }
+  .carousel-track.products { width: 270px; }
+  .carousel-track.products > * { width: 270px; }
   .carousel-arrow { width: 46px; height: 46px; font-size: 15px; }
+}
+/* سطح المكتب: نرجع للتصميم الأصلي — صف عريض بعدة بطاقات وأسهم عائمة فوق حواف الصف */
+@media (min-width: 900px) {
+  .carousel-wrap { display: block; }
+  .carousel-track, .carousel-track.products { width: auto; flex: initial; padding: 4px 4px 12px; }
+  .carousel-track > * { scroll-snap-align: start; }
+  .carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .carousel-arrow:active { transform: translateY(-50%) scale(.9); }
+  .carousel-arrow-prev { right: -22px; }
+  .carousel-arrow-next { left: -22px; }
 }
 /* المؤشر يتحول ليد سحب فوق المسار على الأجهزة التي تدعم الماوس (سطح المكتب) */
 .carousel-track { cursor: grab; }

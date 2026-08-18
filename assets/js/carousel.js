@@ -3,6 +3,11 @@
 (function () {
   'use strict';
 
+  /* أقل من 900px (موبايل/تابلت): المسار عرضه مطابق لعرض بطاقة واحدة (انظر style.css)،
+     فالتنقل يتحرك ببطاقة واحدة بالضبط في كل ضغطة. من 900px فأكثر (سطح المكتب): تصميم
+     الصف متعدد البطاقات الأصلي، فالتنقل يتحرك بجزء من عرض الصف كما كان دائمًا. */
+  var desktopQuery = window.matchMedia('(min-width: 900px)');
+
   function initCarousels() {
     document.querySelectorAll('.carousel-wrap').forEach(function (wrap) {
       var track = wrap.querySelector('.carousel-track');
@@ -10,8 +15,6 @@
       var nextBtn = wrap.querySelector('.carousel-arrow-next');
       if (!track) return;
 
-      /* المسار عرضه مطابق تمامًا لعرض البطاقة الواحدة (انظر style.css)، لذا التنقل
-         يعني تحريك المسار بمقدار عرض بطاقة واحدة + الفراغ بينها كل ضغطة */
       function itemStep() {
         var first = track.firstElementChild;
         if (!first) return 0;
@@ -20,6 +23,10 @@
       }
 
       function scrollByDir(dir) {
+        if (desktopQuery.matches) {
+          track.scrollBy({ left: track.clientWidth * 0.8 * dir, behavior: 'smooth' });
+          return;
+        }
         var step = itemStep();
         if (!step) return;
         track.scrollBy({ left: step * dir, behavior: 'smooth' });
