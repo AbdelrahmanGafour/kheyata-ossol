@@ -38,9 +38,9 @@
           '<div class="footer-col">' +
             '<h4>تواصل معنا</h4>' +
             '<ul class="footer-contact">' +
-              '<li><i class="fa-solid fa-phone"></i><span>01090872716</span></li>' +
-              '<li><i class="fa-brands fa-whatsapp"></i><span>01090872716</span></li>' +
-              '<li><i class="fa-solid fa-envelope"></i><span>info@khayataosol.com</span></li>' +
+              '<li><i class="fa-solid fa-phone"></i><a href="tel:+201090872716">01090872716</a></li>' +
+              '<li><i class="fa-brands fa-whatsapp"></i><a href="https://wa.me/201090872716" target="_blank" rel="noopener">01090872716</a></li>' +
+              '<li><i class="fa-solid fa-envelope"></i><a href="mailto:info@khayataosol.com">info@khayataosol.com</a></li>' +
               '<li><i class="fa-solid fa-location-dot"></i><span>شحن لجميع محافظات مصر</span></li>' +
             '</ul>' +
           '</div>' +

@@ -20,7 +20,8 @@
   .contact-info-item { display: flex; align-items: center; gap: 16px; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,.15); }
   .contact-info-item i { width: 46px; height: 46px; border-radius: 50%; background: rgba(255,255,255,.12); display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--color-accent-light); flex-shrink: 0; }
   .contact-info-item strong { display: block; font-size: 14px; }
-  .contact-info-item span.value { color: rgba(255,255,255,.85); font-size: 14px; direction: ltr; display: inline-block; overflow-wrap: anywhere; }
+  .contact-info-item .value { color: rgba(255,255,255,.85); font-size: 14px; direction: ltr; display: inline-block; overflow-wrap: anywhere; }
+  .contact-info-item a.value:hover { color: var(--color-accent-light); }
   .form-card { background: var(--color-white); border-radius: var(--radius-lg); box-shadow: var(--shadow-soft); padding: 36px; }
   @media (max-width: 340px) {
     .contact-info-card, .form-card { padding: 24px 20px; }
@@ -53,15 +54,15 @@
         <p class="mb-3">فريقنا جاهز للرد على استفساراتك بخصوص المنتجات أو الطلبات أو الالتحاق بأكاديمية الأصول.</p>
         <div class="contact-info-item">
           <i class="fa-solid fa-phone"></i>
-          <div><strong>اتصل بنا</strong><span class="value">01090872716</span></div>
+          <div><strong>اتصل بنا</strong><a class="value" href="tel:+201090872716">01090872716</a></div>
         </div>
         <div class="contact-info-item">
           <i class="fa-brands fa-whatsapp"></i>
-          <div><strong>واتساب</strong><span class="value">01090872716</span></div>
+          <div><strong>واتساب</strong><a class="value" href="https://wa.me/201090872716" target="_blank" rel="noopener">01090872716</a></div>
         </div>
         <div class="contact-info-item">
           <i class="fa-solid fa-envelope"></i>
-          <div><strong>البريد الإلكتروني</strong><span class="value">info@khayataosol.com</span></div>
+          <div><strong>البريد الإلكتروني</strong><a class="value" href="mailto:info@khayataosol.com">info@khayataosol.com</a></div>
         </div>
         <div class="contact-info-item" style="border-bottom:none;">
           <i class="fa-solid fa-location-dot"></i>
