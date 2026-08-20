@@ -13,6 +13,52 @@
     );
   }
 
+  /* تعبئة قائمة المحافظات الـ27 من assets/js/shipping-data.js، كل محافظة تحمل رسوم شحنها
+     الخاصة عبر data-fee حتى تُحتسب تلقائيًا في ملخص الطلب عند الاختيار */
+  function populateGovernorates() {
+    var select = document.getElementById('governorate');
+    (window.EGYPT_GOVERNORATES || []).forEach(function (g) {
+      var opt = document.createElement('option');
+      opt.value = g.name;
+      opt.textContent = g.name;
+      opt.setAttribute('data-fee', g.fee);
+      select.appendChild(opt);
+    });
+  }
+
+  /* رسوم الشحن: مجانية فوق حد الشحن المجاني (FREE_SHIPPING_THRESHOLD من cart.js)،
+     وإلا فرسوم المحافظة المختارة، أو الرسوم الافتراضية قبل اختيار محافظة */
+  function currentShippingCost() {
+    var subtotal = getCartSubtotal();
+    if (subtotal === 0) return 0;
+    if (subtotal >= FREE_SHIPPING_THRESHOLD) return 0;
+    var select = document.getElementById('governorate');
+    var opt = select.options[select.selectedIndex];
+    var fee = opt && opt.getAttribute('data-fee');
+    return fee ? parseFloat(fee) : SHIPPING_COST;
+  }
+
+  function currentTotal() {
+    return getCartSubtotal() + currentShippingCost();
+  }
+
+  function updateShippingHint() {
+    var select = document.getElementById('governorate');
+    var opt = select.options[select.selectedIndex];
+    var hint = document.getElementById('governorate-fee-hint');
+    var fee = opt && opt.getAttribute('data-fee');
+    if (!fee) {
+      hint.classList.remove('is-visible');
+      return;
+    }
+    var subtotal = getCartSubtotal();
+    var text = subtotal >= FREE_SHIPPING_THRESHOLD
+      ? 'الشحن مجاني لهذا الطلب 🎉'
+      : 'رسوم الشحن إلى ' + opt.value + ': ' + formatPrice(parseFloat(fee));
+    hint.querySelector('span').textContent = text;
+    hint.classList.add('is-visible');
+  }
+
   function renderSummary() {
     var items = getCartItems();
     if (!items.length) {
@@ -21,9 +67,15 @@
     }
     renderInto('#checkout-items', items.map(miniItemHTML));
     document.getElementById('c-subtotal').textContent = formatPrice(getCartSubtotal());
-    var shipping = getShippingCost();
+    var shipping = currentShippingCost();
     document.getElementById('c-shipping').textContent = shipping === 0 ? 'مجاني' : formatPrice(shipping);
-    document.getElementById('c-total').textContent = formatPrice(getCartTotal());
+    document.getElementById('c-total').textContent = formatPrice(currentTotal());
+    updateShippingHint();
+
+    var row = document.getElementById('shipping-row');
+    row.classList.remove('is-updated');
+    void row.offsetWidth;
+    row.classList.add('is-updated');
   }
 
   function setFieldError(id, hasError) {
@@ -74,8 +126,8 @@
         };
       }),
       subtotal: getCartSubtotal(),
-      shipping: getShippingCost(),
-      total: getCartTotal()
+      shipping: currentShippingCost(),
+      total: currentTotal()
     };
     var orders = JSON.parse(localStorage.getItem('ko_orders') || '[]');
     orders.unshift(order);
@@ -86,7 +138,9 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
+    populateGovernorates();
     renderSummary();
+    document.getElementById('governorate').addEventListener('change', renderSummary);
     document.getElementById('checkout-form').addEventListener('submit', placeOrder);
   });
 })();

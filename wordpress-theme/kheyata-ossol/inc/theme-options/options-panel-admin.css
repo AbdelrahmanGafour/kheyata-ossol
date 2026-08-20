@@ -1,0 +1,22 @@
+.ko-options-wrap { max-width: 1180px; }
+.ko-options-header { background: #16233B; color: #fff; padding: 24px 28px; border-radius: 8px; margin: 20px 0; }
+.ko-options-header h1 { color: #fff; display: flex; align-items: center; gap: 10px; font-size: 22px; }
+.ko-options-header p { color: rgba(255,255,255,.75); margin-top: 6px; }
+.ko-options-body { display: flex; gap: 24px; align-items: flex-start; }
+.ko-options-tabs { flex: 0 0 220px; background: #fff; border: 1px solid #dcdcde; border-radius: 8px; overflow: hidden; }
+.ko-tab-link { display: flex; align-items: center; gap: 10px; padding: 14px 16px; color: #16233B; text-decoration: none; border-bottom: 1px solid #f0f0f1; font-weight: 500; }
+.ko-tab-link:hover { background: #f6f7f7; color: #1B4C8C; }
+.ko-tab-link.is-active { background: #1B4C8C; color: #fff; }
+.ko-options-form { flex: 1; }
+.ko-options-panel { background: #fff; border: 1px solid #dcdcde; border-radius: 8px; padding: 24px 28px; }
+.ko-options-panel h2 { margin-top: 0; }
+
+/* مفتاح تبديل (toggle switch) بدلاً من checkbox الافتراضي */
+.ko-switch { position: relative; display: inline-block; width: 44px; height: 24px; }
+.ko-switch input { opacity: 0; width: 0; height: 0; }
+.ko-switch-slider { position: absolute; cursor: pointer; inset: 0; background: #ccc; border-radius: 999px; transition: .2s; }
+.ko-switch-slider::before { content: ''; position: absolute; height: 18px; width: 18px; right: 3px; top: 3px; background: white; border-radius: 50%; transition: .2s; }
+.ko-switch input:checked + .ko-switch-slider { background: #1B4C8C; }
+.ko-switch input:checked + .ko-switch-slider::before { transform: translateX(-20px); }
+
+.ko-image-preview img { max-width: 140px; max-height: 140px; display: block; margin-bottom: 10px; border-radius: 6px; border: 1px solid #dcdcde; }

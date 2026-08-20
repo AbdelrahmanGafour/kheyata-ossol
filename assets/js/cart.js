@@ -13,6 +13,7 @@ function getCart() {
 function saveCart(cart) {
   localStorage.setItem(CART_KEY, JSON.stringify(cart));
   updateCartBadge();
+  window.dispatchEvent(new CustomEvent('ko:cart-updated'));
 }
 
 function addToCart(productId, qty) {
@@ -42,6 +43,7 @@ function removeFromCart(productId) {
 function clearCart() {
   localStorage.removeItem(CART_KEY);
   updateCartBadge();
+  window.dispatchEvent(new CustomEvent('ko:cart-updated'));
 }
 
 /* مفتاح عنصر السلة: "productId" للمنتجات العادية، أو "productId::تسمية التنويع"

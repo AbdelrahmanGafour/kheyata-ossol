@@ -24,6 +24,23 @@
   .mini-item span:first-child { color: var(--color-text-muted); }
   .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   @media (max-width: 560px) { .row-2 { grid-template-columns: 1fr; } }
+  .shipping-fee-hint {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    padding: 8px 12px;
+    border-radius: var(--radius-pill);
+    background: var(--color-bg-alt);
+    color: var(--color-primary);
+    font-size: 13px;
+    font-weight: 700;
+    width: fit-content;
+  }
+  .shipping-fee-hint.is-visible { display: flex; }
+  .shipping-fee-hint i { color: var(--color-accent-dark); }
+  .summary-row#shipping-row span:last-child { transition: color .2s ease; }
+  .summary-row#shipping-row.is-updated span:last-child { color: var(--color-primary); }
 </style>
 </head>
 <body>
@@ -64,14 +81,9 @@
                 <label for="governorate">المحافظة</label>
                 <select id="governorate" class="form-control" required>
                   <option value="">اختر المحافظة</option>
-                  <option>القاهرة</option><option>الجيزة</option><option>الإسكندرية</option>
-                  <option>الدقهلية</option><option>الشرقية</option><option>المنوفية</option>
-                  <option>القليوبية</option><option>البحيرة</option><option>الغربية</option>
-                  <option>أسيوط</option><option>المنيا</option><option>سوهاج</option>
-                  <option>بورسعيد</option><option>الإسماعيلية</option><option>السويس</option>
-                  <option>محافظة أخرى</option>
                 </select>
                 <span class="form-error">برجاء اختيار المحافظة</span>
+                <span class="shipping-fee-hint" id="governorate-fee-hint"><i class="fa-solid fa-truck-fast"></i> <span></span></span>
               </div>
               <div class="form-field">
                 <label for="area">المنطقة / الحي</label>
@@ -104,7 +116,7 @@
           <h3><i class="fa-solid fa-receipt"></i> ملخص الطلب</h3>
           <div id="checkout-items"></div>
           <div class="summary-row"><span>المجموع الفرعي</span><span id="c-subtotal">0 ج.م</span></div>
-          <div class="summary-row"><span>الشحن</span><span id="c-shipping">0 ج.م</span></div>
+          <div class="summary-row" id="shipping-row"><span>الشحن</span><span id="c-shipping">0 ج.م</span></div>
           <div class="summary-row total"><span>الإجمالي</span><span id="c-total">0 ج.م</span></div>
           <button type="submit" class="btn btn-primary btn-block mt-3"><i class="fa-solid fa-check"></i> تأكيد الطلب</button>
           <p class="form-hint text-center mt-2">بالضغط على "تأكيد الطلب" أنت توافق على شروط الشحن والدفع عند الاستلام.</p>
@@ -120,6 +132,7 @@
 <script src="assets/vendor/gsap/ScrollTrigger.min.js"></script>
 <script src="assets/vendor/animejs/anime.min.js"></script>
 <script src="assets/js/products-data.js"></script>
+<script src="assets/js/shipping-data.js"></script>
 <script src="assets/js/cart.js"></script>
 <script src="assets/js/auth.js"></script>
 <script src="assets/js/render.js"></script>
